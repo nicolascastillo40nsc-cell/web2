@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Dental | Sonríe con Confianza</title>
+    <title>Clínica Dental OdontoSana | Sonríe con confianza</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons para un diseño limpio -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        /* --- VARIABLES DE DISEÑO (Colores y Tipografía) --- */
         :root {
-            --blanco: #ffffff;
-            --gris-fondo: #f8fafc;
-            --gris-suave: #f1f5f9;
-            --texto-principal: #334155;
-            --texto-secundario: #64748b;
-            --celeste-primario: #0ea5e9;
-            --celeste-hover: #0284c7;
-            --verde-agua: #0d9488;
-            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --max-width: 1200px;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --accent-soft: #e0f2fe; /* Celeste suave */
+            --accent-brand: #0284c7; /* Celeste principal */
+            --accent-hover: #0369a1;
+            --border-color: #f1f5f9;
+            --max-width: 1140px;
         }
 
-        /* --- ESTILOS GENERALES --- */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
@@ -31,444 +35,552 @@
         }
 
         body {
-            font-family: var(--fuente);
-            color: var(--texto-principal);
-            background-color: var(--blanco);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-primary);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 {
-            font-weight: 600;
-            color: var(--texto-principal);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
+        /* Utilidades */
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        section {
-            padding: 5rem 0;
+        .section-padding {
+            padding: 6rem 0;
         }
 
         .section-title {
-            text-align: center;
             font-size: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: var(--celeste-primario);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            font-size: 1.1rem;
         }
 
-        /* --- BOTONES --- */
         .btn {
-            display: inline-block;
-            background-color: var(--celeste-primario);
-            color: var(--blanco);
-            padding: 0.75rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-brand);
+            color: white;
+            padding: 0.875rem 1.75rem;
             border-radius: 50px;
+            text-decoration: none;
             font-weight: 500;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
-            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.1), 0 2px 4px -1px rgba(2, 132, 199, 0.06);
         }
 
         .btn:hover {
-            background-color: var(--celeste-hover);
-            transform: translateY(-2px);
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
         }
 
-        /* --- HEADER & NAVEGACIÓN --- */
+        /* Navbar */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
             position: sticky;
             top: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
         }
 
-        .navbar {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 4.5rem;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--celeste-primario);
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-brand);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-brand);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(180deg, var(--accent-soft) 0%, rgba(255,255,255,0) 100%);
+            padding: 8rem 0 6rem 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 400;
+        }
+
+        /* Tratamientos */
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .treatment-card {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-soft);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--accent-soft);
+            color: var(--accent-brand);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .treatment-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .treatment-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Sobre la clínica */
+        #about {
+            background-color: var(--bg-secondary);
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Simulación de imagen minimalista usando CSS */
+        .about-image-placeholder {
+            background-color: var(--accent-soft);
+            height: 400px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-brand);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        /* Beneficios */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .benefit-icon {
+            color: var(--accent-brand);
+            margin-bottom: 1.25rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contacto */
+        #contact {
+            background-color: var(--bg-secondary);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-card i {
+            color: var(--accent-brand);
+            flex-shrink: 0;
+        }
+
+        .contact-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: pre-line;
+        }
+
+        .hours-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .hours-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .nav-links {
+        .hours-card i {
+            color: var(--accent-brand);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
             display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-size: 0.95rem;
-            color: var(--texto-secundario);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--celeste-primario);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(135deg, #f0fdfa 0%, #f0f9ff 100%);
-            padding: 8rem 0;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: var(--texto-principal);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--texto-secundario);
-            margin-bottom: 2.5rem;
-        }
-
-        /* --- TRATAMIENTOS (Cards) --- */
-        .tratamientos {
-            background-color: var(--blanco);
-        }
-
-        .grid-tratamientos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--gris-fondo);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--gris-suave);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--verde-agua);
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .card p {
-            color: var(--texto-secundario);
-            font-size: 0.95rem;
-        }
-
-        /* --- SOBRE LA CLÍNICA --- */
-        .sobre-nosotros {
-            background-color: var(--gris-fondo);
-        }
-
-        .sobre-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .sobre-content p {
-            font-size: 1.1rem;
-            color: var(--texto-secundario);
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- BENEFICIOS --- */
-        .beneficios {
-            background-color: var(--blanco);
-        }
-
-        .grid-beneficios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            text-align: center;
-        }
-
-        .beneficio-item h3 {
-            margin: 1rem 0 0.5rem 0;
-            font-size: 1.2rem;
-        }
-
-        .beneficio-item p {
-            color: var(--texto-secundario);
-            font-size: 0.95rem;
-        }
-
-        .beneficio-icon {
-            width: 60px;
-            height: 60px;
-            background-color: #e0f2fe;
-            color: var(--celeste-primario);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        /* --- CONTACTO --- */
-        .contacto {
-            background-color: var(--gris-fondo);
-            border-bottom: 1px solid var(--gris-suave);
-        }
-
-        .grid-contacto {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contacto-info h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .contacto-list li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--texto-secundario);
-        }
-
-        .contacto-list strong {
-            color: var(--texto-principal);
-        }
-
-        .whatsapp-link {
-            color: var(--verde-agua) !important;
-            font-weight: 600;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--blanco);
-            padding: 2rem 0;
-            text-align: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
             font-size: 0.9rem;
-            color: var(--texto-secundario);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                height: auto;
-                padding: 1rem 0;
-                gap: 1rem;
-            }
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
 
-            .nav-links {
-                gap: 1.25rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        .hours-list span:first-child {
+            color: var(--text-main);
+            font-weight: 500;
+        }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        .hours-list span:last-child {
+            color: var(--text-muted);
+        }
 
-            section {
-                padding: 4rem 0;
-            }
+        /* Footer */
+        footer {
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividad */
+        @media (max-width: 968px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+            .about-image-placeholder { height: 300px; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        @media (max-width: 640px) {
+            .nav-menu { display: none; } /* En una app real se agregaría un menú de hamburguesa */
+            .section-padding { padding: 4rem 0; }
+            .treatments-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVEGACIÓN -->
+    <!-- Navbar -->
     <header>
-        <div class="container navbar">
+        <div class="container nav-container">
             <a href="#" class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5"></path><path d="M12 2C6.5 2 4 6.5 4 11c0 3.5 2.5 5.5 8 5.5s8-2.05 8-5.5c0-4.5-2.5-9-8-9z"></path></svg>
-                DentalCuidado
+                <i data-lucide="sparkles"></i>
+                <span>OdontoSana</span>
             </a>
-            <nav class="nav-links">
-                <a href="#tratamientos">Tratamientos</a>
-                <a href="#sobre-nosotros">La Clínica</a>
-                <a href="#beneficios">Beneficios</a>
-                <a href="#contacto">Contacto</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#treatments" class="nav-link">Tratamientos</a></li>
+                    <li><a href="#about" class="nav-link">Nosotros</a></li>
+                    <li><a href="#benefits" class="nav-link">Beneficios</a></li>
+                    <li><a href="#contact" class="nav-link">Contacto</a></li>
+                </ul>
             </nav>
+            <a href="https://wa.me/123456789" class="btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">
+                <i data-lucide="phone"></i> WhatsApp
+            </a>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+    <!-- Hero Section -->
+    <section id="hero">
         <div class="container hero-content">
             <h1>Sonríe con confianza</h1>
-            <p>Ofrecemos una atención dental moderna, cercana y profesional para cuidar de tu salud bucal y la de tu familia en un ambiente relajado y seguro.</p>
-            <a href="#contacto" class="btn">Agendar hora</a>
+            <p>Cuidamos de tu salud bucal con un enfoque clínico moderno, humano y completamente personalizado.</p>
+            <a href="#contact" class="btn">
+                <span>Agendar hora</span>
+                <i data-lucide="calendar"></i>
+            </a>
         </div>
     </section>
 
-    <!-- TRATAMIENTOS -->
-    <section id="tratamientos" class="tratamientos">
+    <!-- Tratamientos -->
+    <section id="treatments" class="section-padding">
         <div class="container">
             <h2 class="section-title">Nuestros Tratamientos</h2>
-            <div class="grid-tratamientos">
-                
-                <div class="card">
-                    <div class="card-icon">✦</div>
+            <p class="section-subtitle">Ofrecemos soluciones odontológicas integrales para toda la familia, utilizando técnicas avanzadas y materiales de primera calidad.</p>
+            
+            <div class="treatments-grid">
+                <!-- Limpieza -->
+                <div class="treatment-card">
+                    <div class="card-icon"><i data-lucide="shield-check"></i></div>
                     <h3>Limpieza Dental</h3>
-                    <p>Eliminación de sarro y placa bacteriana para prevenir enfermedades periodontales y mantener tu aliento fresco.</p>
+                    <p>Eliminación de sarro y pulido dental profundo para prevenir enfermedades de las encías y mantener tu aliento fresco.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">✦</div>
+                <!-- Evaluación -->
+                <div class="treatment-card">
+                    <div class="card-icon"><i data-lucide="stethoscope"></i></div>
                     <h3>Evaluación General</h3>
-                    <p>Diagnóstico exhaustivo con tecnología de vanguardia para detectar a tiempo cualquier necesidad de tu dentadura.</p>
+                    <p>Diagnóstico preciso con tecnología de diagnóstico digital para diseñar un plan de tratamiento adecuado a tus necesidades.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">✦</div>
+                <!-- Blanqueamiento -->
+                <div class="treatment-card">
+                    <div class="card-icon"><i data-lucide="sparkles"></i></div>
                     <h3>Blanqueamiento</h3>
-                    <p>Procedimientos seguros y efectivos para recuperar el blanco natural de tus dientes de forma rápida.</p>
+                    <p>Devuelve el brillo natural a tu sonrisa de forma segura, reduciendo manchas y aclarando varios tonos en pocas sesiones.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">✦</div>
+                <!-- Ortodoncia -->
+                <div class="treatment-card">
+                    <div class="card-icon"><i data-lucide="smile"></i></div>
                     <h3>Ortodoncia</h3>
-                    <p>Alineación dental mediante técnicas tradicionales o invisibles adaptadas a tu ritmo de vida y edad.</p>
+                    <p>Alineación dental mediante brackets tradicionales o sistemas invisibles modernos para mejorar tu estética y mordida.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">✦</div>
+                <!-- Implantes -->
+                <div class="treatment-card">
+                    <div class="card-icon"><i data-lucide="layers"></i></div>
                     <h3>Implantes Dentales</h3>
-                    <p>Restauramos la funcionalidad y estética de tu boca reemplazando piezas perdidas con la mayor precisión.</p>
+                    <p>Restauración permanente de piezas dentales perdidas con prótesis fijas que lucen y se sienten como dientes naturales.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">✦</div>
+                <!-- Urgencias -->
+                <div class="treatment-card">
+                    <div class="card-icon"><i data-lucide="activity"></i></div>
                     <h3>Urgencias 24/7</h3>
-                    <p>Atención inmediata frente a dolores agudos, fracturas o molestias imprevistas de manera eficiente.</p>
+                    <p>Atención inmediata frente a dolores agudos, fracturas o traumatismos dentales. Estamos contigo cuando más nos necesitas.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- SOBRE LA CLÍNICA -->
-    <section id="sobre-nosotros" class="sobre-nosotros">
-        <div class="container sobre-content">
-            <h2 class="section-title">Sobre la Clínica</h2>
-            <p>En DentalCuidado nos dedicamos a transformar la visita al dentista en una experiencia agradable y libre de estrés. Nos define la calidez humana y un estricto estándar de higiene y profesionalismo.</p>
-            <p>Nuestro equipo multidisciplinario de especialistas está en constante formación para ofrecerte soluciones éticas, precisas y duraderas, garantizando que vuelvas a sonreír con total plenitud.</p>
+    <!-- Sobre la clínica -->
+    <section id="about" class="section-padding">
+        <div class="container about-wrapper">
+            <div class="about-text">
+                <h2>Sobre la clínica</h2>
+                <p>En OdontoSana nos define el compromiso con tu bienestar. Creemos que una visita al dentista debe ser una experiencia tranquila, libre de estrés y completamente transparente.</p>
+                <p>Con un equipo de profesionales altamente cualificados y en constante formación, nos enfocamos en la prevención y en tratamientos mínimamente invasivos para cuidar la salud integral de tu sonrisa.</p>
+            </div>
+            <div class="about-image-placeholder">
+                <i data-lucide="heart-pulse" style="width: 4rem; height: 4rem;"></i>
+            </div>
         </div>
     </section>
 
-    <!-- BENEFICIOS -->
-    <section id="beneficios" class="beneficios">
+    <!-- Beneficios -->
+    <section id="benefits" class="section-padding">
         <div class="container">
-            <h2 class="section-title">¿Por qué elegirnos?</h2>
-            <div class="grid-beneficios">
-                
-                <div class="beneficio-item">
-                    <div class="beneficio-icon">01</div>
+            <h2 class="section-title">Por qué elegirnos</h2>
+            <p class="section-subtitle">Diseñamos cada detalle de nuestra atención para ofrecerte una experiencia cómoda y de la más alta calidad.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i data-lucide="user-check" class="benefit-icon" style="width: 2.5rem; height: 2.5rem;"></i>
                     <h3>Atención Personalizada</h3>
-                    <p>No creemos en soluciones genéricas. Escuchamos tus necesidades y diseñamos un plan de tratamiento exclusivo para ti.</p>
+                    <p>Escuchamos tus necesidades y diseñamos tratamientos exclusivos que se adaptan a tu ritmo y expectativas.</p>
                 </div>
-
-                <div class="beneficio-item">
-                    <div class="beneficio-icon">02</div>
+                <div class="benefit-item">
+                    <i data-lucide="cpu" class="benefit-icon" style="width: 2.5rem; height: 2.5rem;"></i>
                     <h3>Tecnología Moderna</h3>
-                    <p>Equipamiento digital avanzado para diagnósticos más rápidos, menos invasivos y tratamientos de alta precisión.</p>
+                    <p>Equipamiento digital de última generación para diagnósticos más rápidos, precisos y procedimientos más cómodos.</p>
                 </div>
-
-                <div class="beneficio-item">
-                    <div class="beneficio-icon">03</div>
+                <div class="benefit-item">
+                    <i data-lucide="coffee" class="benefit-icon" style="width: 2.5rem; height: 2.5rem;"></i>
                     <h3>Ambiente Cómodo</h3>
-                    <p>Espacios diseñados bajo un concepto minimalista y relajante para que te sientas tranquilo desde el primer momento.</p>
+                    <p>Instalaciones diseñadas bajo un concepto minimalista y relajante para garantizar tu paz mental en cada visita.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO Y HORARIOS -->
-    <section id="contacto" class="contacto">
+    <!-- Contacto -->
+    <section id="contact" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Contacto y Horarios</h2>
-            <div class="grid-contacto">
-                
-                <div class="contacto-info">
-                    <h3>Canales de Atención</h3>
-                    <ul class="contacto-list">
-                        <li><strong>WhatsApp:</strong> <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-link">+56 9 1234 5678 (Escríbenos)</a></li>
-                        <li><strong>Teléfono:</strong> +56 2 2345 6789</li>
-                        <li><strong>Email:</strong> contacto@dentalcuidado.cl</li>
-                        <li><strong>Dirección:</strong> Av. Providencia 1234, Oficina 401, Santiago</li>
-                    </ul>
+            <h2 class="section-title">Contacto y Citas</h2>
+            <p class="section-subtitle">Estamos listos para atenderte. Elige el canal de tu preferencia para resolver dudas o agendar tu evaluación.</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <!-- WhatsApp -->
+                    <div class="contact-card">
+                        <i data-lucide="message-circle"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/123456789" target="_blank">+56 9 1234 5678</a>
+                        </div>
+                    </div>
+                    <!-- Teléfono -->
+                    <div class="contact-card">
+                        <i data-lucide="phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <a href="tel:+56412345678">+56 41 234 5678</a>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-card">
+                        <i data-lucide="mail"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:contacto@odontosana.cl">contacto@odontosana.cl</a>
+                        </div>
+                    </div>
+                    <!-- Dirección -->
+                    <div class="contact-card">
+                        <i data-lucide="map-pin"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Av. Principal 1420, Oficina 402<br>Concepción, Chile</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="contacto-info">
-                    <h3>Horario de Apertura</h3>
-                    <ul class="contacto-list">
-                        <li><strong>Lunes a Viernes:</strong> 09:00 - 19:30 hrs.</li>
-                        <li><strong>Sábado:</strong> 10:00 - 14:00 hrs.</li>
-                        <li><strong>Domingo y Festivos:</strong> Cerrado (Excepto urgencias coordinadas)</li>
+                <!-- Horarios -->
+                <div class="hours-card">
+                    <h4><i data-lucide="clock"></i> Horarios de Atención</h4>
+                    <ul class="hours-list">
+                        <li><span>Lunes a Viernes</span> <span>09:00 - 19:00</span></li>
+                        <li><span>Sábado</span> <span>09:00 - 14:00</span></li>
+                        <li><span>Domingo y Festivos</span> <span>Cerrado</span></li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 DentalCuidado. Todos los derechos reservados. Diseñado con un enfoque de salud consciente.</p>
+            <p>&copy; 2026 OdontoSana. Todos los derechos reservados. Diseño minimalista enfocado en el paciente.</p>
         </div>
-    </footer
->
+    </footer>
 
+    <!-- Inicialización de los Iconos Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
