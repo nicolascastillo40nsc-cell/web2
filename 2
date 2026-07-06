@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Dental | Sonríe con Confianza</title>
+    <style>
+        /* --- VARIABLES DE DISEÑO (Colores y Tipografía) --- */
+        :root {
+            --blanco: #ffffff;
+            --gris-fondo: #f8fafc;
+            --gris-suave: #f1f5f9;
+            --texto-principal: #334155;
+            --texto-secundario: #64748b;
+            --celeste-primario: #0ea5e9;
+            --celeste-hover: #0284c7;
+            --verde-agua: #0d9488;
+            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --max-width: 1200px;
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fuente);
+            color: var(--texto-principal);
+            background-color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            color: var(--texto-principal);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--celeste-primario);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--celeste-primario);
+            color: var(--blanco);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--celeste-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- HEADER & NAVEGACIÓN --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--celeste-primario);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--texto-secundario);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--celeste-primario);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #f0fdfa 0%, #f0f9ff 100%);
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--texto-principal);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--texto-secundario);
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- TRATAMIENTOS (Cards) --- */
+        .tratamientos {
+            background-color: var(--blanco);
+        }
+
+        .grid-tratamientos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--gris-fondo);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gris-suave);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--verde-agua);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        /* --- SOBRE LA CLÍNICA --- */
+        .sobre-nosotros {
+            background-color: var(--gris-fondo);
+        }
+
+        .sobre-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .sobre-content p {
+            font-size: 1.1rem;
+            color: var(--texto-secundario);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- BENEFICIOS --- */
+        .beneficios {
+            background-color: var(--blanco);
+        }
+
+        .grid-beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .beneficio-item h3 {
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .beneficio-item p {
+            color: var(--texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        .beneficio-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #e0f2fe;
+            color: var(--celeste-primario);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* --- CONTACTO --- */
+        .contacto {
+            background-color: var(--gris-fondo);
+            border-bottom: 1px solid var(--gris-suave);
+        }
+
+        .grid-contacto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contacto-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contacto-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--texto-secundario);
+        }
+
+        .contacto-list strong {
+            color: var(--texto-principal);
+        }
+
+        .whatsapp-link {
+            color: var(--verde-agua) !important;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--blanco);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--texto-secundario);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5"></path><path d="M12 2C6.5 2 4 6.5 4 11c0 3.5 2.5 5.5 8 5.5s8-2.05 8-5.5c0-4.5-2.5-9-8-9z"></path></svg>
+                DentalCuidado
+            </a>
+            <nav class="nav-links">
+                <a href="#tratamientos">Tratamientos</a>
+                <a href="#sobre-nosotros">La Clínica</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Sonríe con confianza</h1>
+            <p>Ofrecemos una atención dental moderna, cercana y profesional para cuidar de tu salud bucal y la de tu familia en un ambiente relajado y seguro.</p>
+            <a href="#contacto" class="btn">Agendar hora</a>
+        </div>
+    </section>
+
+    <!-- TRATAMIENTOS -->
+    <section id="tratamientos" class="tratamientos">
+        <div class="container">
+            <h2 class="section-title">Nuestros Tratamientos</h2>
+            <div class="grid-tratamientos">
+                
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Limpieza Dental</h3>
+                    <p>Eliminación de sarro y placa bacteriana para prevenir enfermedades periodontales y mantener tu aliento fresco.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Evaluación General</h3>
+                    <p>Diagnóstico exhaustivo con tecnología de vanguardia para detectar a tiempo cualquier necesidad de tu dentadura.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Blanqueamiento</h3>
+                    <p>Procedimientos seguros y efectivos para recuperar el blanco natural de tus dientes de forma rápida.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Ortodoncia</h3>
+                    <p>Alineación dental mediante técnicas tradicionales o invisibles adaptadas a tu ritmo de vida y edad.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Implantes Dentales</h3>
+                    <p>Restauramos la funcionalidad y estética de tu boca reemplazando piezas perdidas con la mayor precisión.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Urgencias 24/7</h3>
+                    <p>Atención inmediata frente a dolores agudos, fracturas o molestias imprevistas de manera eficiente.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE LA CLÍNICA -->
+    <section id="sobre-nosotros" class="sobre-nosotros">
+        <div class="container sobre-content">
+            <h2 class="section-title">Sobre la Clínica</h2>
+            <p>En DentalCuidado nos dedicamos a transformar la visita al dentista en una experiencia agradable y libre de estrés. Nos define la calidez humana y un estricto estándar de higiene y profesionalismo.</p>
+            <p>Nuestro equipo multidisciplinario de especialistas está en constante formación para ofrecerte soluciones éticas, precisas y duraderas, garantizando que vuelvas a sonreír con total plenitud.</p>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="beneficios">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <div class="grid-beneficios">
+                
+                <div class="beneficio-item">
+                    <div class="beneficio-icon">01</div>
+                    <h3>Atención Personalizada</h3>
+                    <p>No creemos en soluciones genéricas. Escuchamos tus necesidades y diseñamos un plan de tratamiento exclusivo para ti.</p>
+                </div>
+
+                <div class="beneficio-item">
+                    <div class="beneficio-icon">02</div>
+                    <h3>Tecnología Moderna</h3>
+                    <p>Equipamiento digital avanzado para diagnósticos más rápidos, menos invasivos y tratamientos de alta precisión.</p>
+                </div>
+
+                <div class="beneficio-item">
+                    <div class="beneficio-icon">03</div>
+                    <h3>Ambiente Cómodo</h3>
+                    <p>Espacios diseñados bajo un concepto minimalista y relajante para que te sientas tranquilo desde el primer momento.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y HORARIOS -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto y Horarios</h2>
+            <div class="grid-contacto">
+                
+                <div class="contacto-info">
+                    <h3>Canales de Atención</h3>
+                    <ul class="contacto-list">
+                        <li><strong>WhatsApp:</strong> <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-link">+56 9 1234 5678 (Escríbenos)</a></li>
+                        <li><strong>Teléfono:</strong> +56 2 2345 6789</li>
+                        <li><strong>Email:</strong> contacto@dentalcuidado.cl</li>
+                        <li><strong>Dirección:</strong> Av. Providencia 1234, Oficina 401, Santiago</li>
+                    </ul>
+                </div>
+
+                <div class="contacto-info">
+                    <h3>Horario de Apertura</h3>
+                    <ul class="contacto-list">
+                        <li><strong>Lunes a Viernes:</strong> 09:00 - 19:30 hrs.</li>
+                        <li><strong>Sábado:</strong> 10:00 - 14:00 hrs.</li>
+                        <li><strong>Domingo y Festivos:</strong> Cerrado (Excepto urgencias coordinadas)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 DentalCuidado. Todos los derechos reservados. Diseñado con un enfoque de salud consciente.</p>
+        </div>
+    </footer
+>
+
+</body>
+</html>
